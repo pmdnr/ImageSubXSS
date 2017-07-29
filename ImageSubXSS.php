@@ -28,8 +28,16 @@ $xssfilter = ['"','\'','(','\\','<','&#'];
 $xssfilter = ['"','\'','(','\\','<','&#'];
 $xssfilter_good1 = ['<img src="XSSImages/quot.png">','<img src="XSSImages/apos.png">','<img src="XSSImages/lrb.png">'
 ,'<img src="XSSImages/bs.png">','<img src="XSSImages/lt.png">','<img src="XSSImages/amphash.png">'];
-$xssfilter_good2 = ['<img src="XSSImages/quotw.png">','<img src="XSSImages/aposw.png">','<img src="XSSImages/lrbw.png">'
-,'<img src="XSSImages/bsw.png">','<img src="XSSImages/ltw.png">','<img src="XSSImages/amphashw.png">'];
+$xssfilter_good2  = ['<img src="XSSImages/quotw.png">','<img src="XSSImages/aposw.png">','<img src="XSSImages/lrbw.png">','<img src="XSSImages/bsw.png">','<img src="XSSImages/ltw.png">','<img src="XSSImages/amphashw.png">'];
+
+$xssfilter_good = array();
+
+if($bg==1){
+	$xssfilter_good = $xssfilter_good1;
+}
+else if($bg==2){
+	$xssfilter_good = $xssfilter_good2;
+}
 
 //processing POST data to remove attacks
 foreach ($_POST as $inputname => $inputdata) {
@@ -37,11 +45,11 @@ foreach ($_POST as $inputname => $inputdata) {
 		foreach ($inputname as $inputname => $inputdata) {
 
 	}*/
-	$_POST['$inputname'] = str_replace($xssfilter, $xssfilter_good.$bg, $inputdata);
+	$_POST['$inputname'] = str_replace($xssfilter, $xssfilter_good, $inputdata);
 }
 //processing GET data to remove attacks
 foreach ($_GET as $inputname => $inputdata) {
-	$_GET['$inputname'] = str_replace($xssfilter, $xssfilter_good.$bg, $inputdata);
+	$_GET['$inputname'] = str_replace($xssfilter, $xssfilter_good, $inputdata);
 }
 
 ?>
