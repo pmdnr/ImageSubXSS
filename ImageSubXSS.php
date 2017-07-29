@@ -21,11 +21,15 @@ Check pmdnr.com for additional information
 by default bg value is 1*/
 $bg = 1;
 
-/* if you want to exclude some characters from filter then simple remove
-from array default filter array contains ",',(,\,<,&# and in code looks like 
-$xssfilter = ['"','\'','(','\\','<','&#'];
+/* You can exclude some characters from filter by modifying 
+xssfilter, $xssfilter_good1, $xssfilter_good2 and $xssfiltertemp arrays  .
+Default xssfilter array contains ",',(,\,<,&# and corresponding values 
+from $xssfilter_good1, $xssfilter_good2 arrays and $xssfiltertemp.
+Default : $xssfilter = ['"','\'','(','\\','<','&#'];
 */
 $xssfilter = ['"','\'','(','\\','<','&#'];
+$xssfiltertemp = ['quot','apos','lrb','bs','lt','amphash'];
+
 $xssfilter_good1 = ['<img src="XSSImages/quot.png">','<img src="XSSImages/apos.png">',
 '<img src="XSSImages/lrb.png">','<img src="XSSImages/bs.png">','<img src="XSSImages/lt.png">',
 '<img src="XSSImages/amphash.png">'];
@@ -48,11 +52,13 @@ foreach ($_POST as $inputname => $inputdata) {
 		foreach ($inputname as $inputname => $inputdata) {
 
 	}*/
-	$_POST['$inputname'] = str_replace($xssfilter, $xssfilter_good, $inputdata);
+	$_POST[$inputname] = str_replace($xssfilter, $xssfiltertemp, $_POST[$inputname]);
+	$_POST[$inputname] = str_replace($xssfiltertemp, $xssfilter_good, $_POST[$inputname]);
 }
 //processing GET data to remove attacks
 foreach ($_GET as $inputname => $inputdata) {
-	$_GET['$inputname'] = str_replace($xssfilter, $xssfilter_good, $inputdata);
+	$$_GET[$inputname] = str_replace($xssfilter, $xssfiltertemp, $_GET[$inputname]);
+	$$_GET[$inputname] = str_replace($xssfiltertemp, $xssfilter_good, $_GET[$inputname]);
 }
 
 ?>
