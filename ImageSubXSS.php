@@ -26,10 +26,10 @@ from array default filter array contains ",',(,\,<,&# and in code looks like
 $xssfilter = ['"','\'','(','\\','<','&#'];
 */
 $xssfilter = ['"','\'','(','\\','<','&#'];
-$xssfilter_good1 = ['<img src="images/quot.png">','<img src="images/apos.png">','<img src="images/lrb.png">'
-,'<img src="images/bs.png">','<img src="images/lt.png">','<img src="images/amphash.png">'];
-$xssfilter_good2 = ['<img src="images/quotw.png">','<img src="images/aposw.png">','<img src="images/lrbw.png">'
-,'<img src="images/bsw.png">','<img src="images/ltw.png">','<img src="images/amphashw.png">'];
+$xssfilter_good1 = ['<img src="XSSImages/quot.png">','<img src="XSSImages/apos.png">','<img src="XSSImages/lrb.png">'
+,'<img src="XSSImages/bs.png">','<img src="XSSImages/lt.png">','<img src="XSSImages/amphash.png">'];
+$xssfilter_good2 = ['<img src="XSSImages/quotw.png">','<img src="XSSImages/aposw.png">','<img src="XSSImages/lrbw.png">'
+,'<img src="XSSImages/bsw.png">','<img src="XSSImages/ltw.png">','<img src="XSSImages/amphashw.png">'];
 
 //processing POST data to remove attacks
 foreach ($_POST as $inputname => $inputdata) {
