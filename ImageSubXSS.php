@@ -3,8 +3,12 @@
 --by PMD Nagarjun and Dr. Shaik Shakeel Ahamad-------------------------
 Solution to prevent Cross Site Scripting Attacks in Web Applications
 -----------------------------------------------------------------------
-How to use : include this file in the beginning of your .php files
-which process user data. include("ImageSubXSS.php");
+How to Use : 
+Download ImageSubXSS.php and XSSImages folder (which contain required images) from 
+https://github.com/pmdnr/ImageSubXSS/.
+Include this ImageSubXSS.php in the beginning of your .php file which handles input data.
+Example : include("ImageSubXSS.php");
+Note: Images need to be in XSSImages folder. And ImageSubXSS.php and XSSImages folder need to be in same folder
 -----------------------------------------------------------------------
 ImageSubXSS is licensed under the MIT License
 -----------------------------------------------------------------------
